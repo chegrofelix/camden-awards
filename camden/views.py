@@ -16,12 +16,12 @@ from .serializer import ProfileSerializer,ProjectSerializer
 # Create your views here.
 def home(request):
     projects=Project.objects.all()
-    return render(request,'awwards/home.html',{'projects':projects})
+    return render(request,'camden/home.html',{'projects':projects})
 
 @login_required(login_url='/accounts/login/') 
 def rate_project(request,project_id):
     project=Project.objects.get(id=project_id)
-    return render(request,"awwards/project.html",{"project":project})
+    return render(request,"camden/project.html",{"project":project})
 
 @login_required(login_url='/accounts/login/') 
 def view_profile(request):
@@ -38,7 +38,7 @@ def view_profile(request):
         'form':form,
         'projects':projects,
     }
-    return render(request,"awwards/profile.html",context=context)
+    return render(request,"camden/profile.html",context=context)
 
 
 def register(request):
@@ -64,7 +64,7 @@ def search_project(request):
         searched_projects=Project.search_by_name(search_term)
         message = f"{search_term}"
 
-        return render(request,'awwards/search.html',{"message":message, "projects":searched_projects, "project":search_term})
+        return render(request,'camden/search.html',{"message":message, "projects":searched_projects, "project":search_term})
     
     else:
         message = "Please enter search name"
@@ -84,11 +84,11 @@ def new_project(request):
         
     else:
         form = NewProjectForm()
-    return render(request, 'awwards/new_project.html', {"form":form, "current_user":current_user})
+    return render(request, 'camden/new_project.html', {"form":form, "current_user":current_user})
     
 @login_required(login_url='/accounts/login/')   
 def api_page(request):
-    return render(request,'awwards/api_page.html')
+    return render(request,'camden/api_page.html')
 
 
 class ProfileList(APIView):
