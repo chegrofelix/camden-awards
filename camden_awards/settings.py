@@ -79,9 +79,9 @@ WSGI_APPLICATION = 'camden_awards.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'camden',
-        'USER': 'moringa',
-        'PASSWORD':'ragnarok'
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
     }
 }
 
