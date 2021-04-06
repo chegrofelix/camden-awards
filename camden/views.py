@@ -23,7 +23,7 @@ def rate_project(request,project_id):
     project=Project.objects.get(id=project_id)
     return render(request,"camden/project.html",{"project":project})
 
-@login_required(login_url='/accounts/login/') 
+@login_required(login_url='/registration/login/') 
 def view_profile(request):
     projects=request.user.profile.project_set.all() 
     profile=request.user.profile
@@ -69,9 +69,9 @@ def search_project(request):
     else:
         message = "Please enter search name"
 
-        return render(request, 'awwards/search.html',{"message":message})
+        return render(request, 'camden/search.html',{"message":message})
 
-@login_required(login_url='/accounts/login/')     
+@login_required(login_url='/registration/login/')     
 def new_project(request):
     current_user = request.user
     if request.method == 'POST':
@@ -86,7 +86,7 @@ def new_project(request):
         form = NewProjectForm()
     return render(request, 'camden/new_project.html', {"form":form, "current_user":current_user})
     
-@login_required(login_url='/accounts/login/')   
+@login_required(login_url='/registration/login/')   
 def api_page(request):
     return render(request,'camden/api_page.html')
 

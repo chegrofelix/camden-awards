@@ -1,0 +1,1 @@
+web: gunicorn camden_awards.wsgi --log-file
