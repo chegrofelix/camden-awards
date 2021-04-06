@@ -1,1 +1,1 @@
-web: gunicorn camden_awards.wsgi --log-file
+web: gunicorn camden_awards.wsgi 
